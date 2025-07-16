@@ -149,8 +149,10 @@ fi
 CONFIG_FILE="config.js"
 if [ -f "$CONFIG_FILE" ]; then
     echo "[설정] config.js 파일의 주요 값을 직접 입력해 주세요."
-    read -p "ALLOWED_HOST 값을 입력하세요 (예: example.com): " USER_ALLOWED_HOST < /dev/tty
-    read -p "PAGE_PASSWORD 값을 입력하세요 (토큰 발급용 비밀번호): " USER_PAGE_PASSWORD < /dev/tty
+    echo -n "ALLOWED_HOST 값을 입력하세요 (예: example.com): "
+    read USER_ALLOWED_HOST < /dev/tty
+    echo -n "PAGE_PASSWORD 값을 입력하세요 (토큰 발급용 비밀번호): "
+    read USER_PAGE_PASSWORD < /dev/tty
 
     USER_ALLOWED_REFERER="https://$USER_ALLOWED_HOST"
 
