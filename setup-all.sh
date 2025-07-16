@@ -145,16 +145,12 @@ else
     exit 1
 fi
 
-echo "========================================="
-echo "모든 설정 과정이 성공적으로 완료되었습니다."
-echo "현재 위치: $(pwd)"
-
 # --- config.js 사용자 입력 기반 수정 ---
 CONFIG_FILE="config.js"
 if [ -f "$CONFIG_FILE" ]; then
     echo "[설정] config.js 파일의 주요 값을 직접 입력해 주세요."
-    read -p "ALLOWED_HOST 값을 입력하세요 (예: example.com): " USER_ALLOWED_HOST
-    read -p "PAGE_PASSWORD 값을 입력하세요 (토큰 발급용 비밀번호): " USER_PAGE_PASSWORD
+    read -p "ALLOWED_HOST 값을 입력하세요 (예: example.com): " USER_ALLOWED_HOST < /dev/tty
+    read -p "PAGE_PASSWORD 값을 입력하세요 (토큰 발급용 비밀번호): " USER_PAGE_PASSWORD < /dev/tty
 
     USER_ALLOWED_REFERER="https://$USER_ALLOWED_HOST"
 
@@ -165,3 +161,7 @@ if [ -f "$CONFIG_FILE" ]; then
 else
     echo "[설정] config.js 파일을 찾을 수 없습니다. 수동으로 수정해 주세요."
 fi
+
+echo "========================================="
+echo "모든 설정 과정이 성공적으로 완료되었습니다."
+echo "현재 위치: $(pwd)"
