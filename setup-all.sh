@@ -165,7 +165,3 @@ if [ -f "$CONFIG_FILE" ]; then
 else
     echo "[설정] config.js 파일을 찾을 수 없습니다. 수동으로 수정해 주세요."
 fi
-
-# --- 마지막에 복제된 레포지토리로 이동 ---
-cd "$REPO_DIR"
-echo "스크립트 종료 후 현재 위치: $(pwd)"
