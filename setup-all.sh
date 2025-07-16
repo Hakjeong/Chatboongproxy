@@ -162,6 +162,20 @@ else
     echo "[설정] config.js 파일을 찾을 수 없습니다. 수동으로 수정해 주세요."
 fi
 
+# --- 7. PM2로 프록시 서버 시작 ---
+echo "[7/7] PM2로 프록시 서버를 시작합니다..."
+if [ -f "proxy.js" ]; then
+    pm2 start proxy.js
+    echo "proxy.js가 PM2로 시작되었습니다."
+else
+    echo "proxy.js 파일을 찾을 수 없습니다."
+fi
+
+# --- 8. PM2 startup 설정 ---
+echo "[8/8] PM2 startup 설정을 진행합니다..."
+pm2 startup
+echo "PM2 startup 설정이 완료되었습니다."
+
 echo "========================================="
 echo "모든 설정 과정이 성공적으로 완료되었습니다."
 echo "현재 위치: $(pwd)"
